@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Config} from "./Config/Config";
+import {MetaGui} from "./MetaGui/MetaGui";
 
 function App() {
     return (
         <div className="App">
-            <Config/>
+            <MetaGui/>
         </div>
     );
 }

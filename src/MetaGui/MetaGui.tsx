@@ -7,7 +7,7 @@ type ConfigState = {
 };
 
 
-class Config extends Component<{}, ConfigState> {
+class MetaGui extends Component<{}, ConfigState> {
     static propTypes = {};
 
     state = {
@@ -35,4 +35,4 @@ submit: SUBMIT
     }
 }
 
-export {Config};
+export {MetaGui};
