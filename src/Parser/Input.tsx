@@ -8,7 +8,7 @@ type InputProps = {
 }
 
 export const Input: FunctionComponent<InputProps> = ({text}) =>
-    <textarea className={style.textarea} value={text} />;
+    <textarea className={style.textarea} value={text}/>;
 
 Input.propTypes = {
     text: PropTypes.string,
