@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import style from "./config.module.scss";
+import {MetaForm} from "./parser";
 
 type ConfigState = {
-    rawText?: string,
+    rawText?: string;
 };
 
 
@@ -10,7 +11,8 @@ class Config extends Component<{}, ConfigState> {
     static propTypes = {};
 
     state = {
-        rawText: ''
+        rawText: '',
+        elements: []
     };
 
     onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -20,7 +22,10 @@ class Config extends Component<{}, ConfigState> {
 
     render() {
         return (
-            <textarea className={style.textarea} value={this.state.rawText} onChange={this.onTextChange}/>
+            <div>
+                <textarea className={style.textarea} value={this.state.rawText} onChange={this.onTextChange}/>
+                <MetaForm code={this.state.rawText} />
+            </div>
         );
     }
 }
