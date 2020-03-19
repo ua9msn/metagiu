@@ -11,8 +11,13 @@ class Config extends Component<{}, ConfigState> {
     static propTypes = {};
 
     state = {
-        rawText: '',
-        elements: []
+        rawText: `
+label: name
+text: NAME 
+label: fullname
+text: = NAME + " qweqwe"
+submit: SUBMIT  
+`
     };
 
     onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

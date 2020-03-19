@@ -30,9 +30,10 @@ function tokenize(code) {
         }
     });
 }
+
 const NilEl = props => <div/>;
 const LabelElement = props => <label>{props.value}</label>;
-const TextElement = props => <input name={props.name} value={props.data[props.name]} onChange={props.onChange} />;
+const TextElement = props => <input name={props.name} value={props.data[props.name] || ''} onChange={props.onChange} />;
 const SubmitElement = props => <input type="submit" value={props.value || 'submit'}/>;
 const ExpressionElement = ({data, formula}) => {
     const tokens = formula
@@ -56,8 +57,16 @@ export class MetaForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {}
+            data: {},
+            elements: [],
+            code: ''
         }
+    }
+
+    static getDerivedStateFromProps(props, state){
+        if(props.code === state.code) return null;
+        const elements = tokenize(props.code);
+        return {elements, code: props.code}
     }
 
     onElChange = e => {
@@ -70,12 +79,10 @@ export class MetaForm extends Component {
     };
 
     render() {
-        const tokens = tokenize(this.props.code);
-        const Elements = tokens.map((El, index) => {
+
+        const Elements = this.state.elements.map((El, index) => {
             return (
-                <div key={index}>
-                    <El onChange={this.onElChange} data={this.state.data} />
-                </div>
+                <El onChange={this.onElChange} data={this.state.data} key={index} />
             )
         });
         return (
