@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import style from "./config.module.scss";
-import {MetaForm} from "./parser";
+import {MetaForm} from "./MetaFrom";
 
 type ConfigState = {
     rawText?: string;
@@ -27,7 +27,7 @@ submit: SUBMIT
 
     render() {
         return (
-            <div>
+            <div className={style.metaGui}>
                 <textarea className={style.textarea} value={this.state.rawText} onChange={this.onTextChange}/>
                 <MetaForm code={this.state.rawText} />
             </div>

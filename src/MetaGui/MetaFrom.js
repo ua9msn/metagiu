@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import style from './config.module.scss';
 
 const TYPES = Object.freeze({
     LABEL:  'label',
@@ -10,8 +11,8 @@ const TYPES = Object.freeze({
 const stringMatcher = new RegExp(/^".+"$/);
 
 const LabelElement = props => <label>{props.value}</label>;
-const TextElement = props => <input name={props.name} value={props.data[props.name] || ''} onChange={props.onChange}/>;
-const SubmitElement = props => <input type="submit" value={props.value || 'submit'}/>;
+const TextElement = props => <input name={props.name} value={props.data[props.name] || ''} onChange={props.onChange} autoComplete='off' />;
+const SubmitElement = props => <input type="submit" value={props.value || 'submit'} onClick={props.onSubmit} />;
 const ExpressionElement = ({data = {}, formula}) => {
     const tokens = formula
         .trim()
@@ -89,10 +90,12 @@ export class MetaForm extends Component {
     render() {
         const Elements = this.state.elements
             .map((El, index) =>
-                <El onChange={this.onElChange} data={this.state.data} key={index}/>
+                <div className={style.formElement}  key={index}>
+                    <El onChange={this.onElChange} data={this.state.data}/>
+                </div>
             );
         return (
-            <form>
+            <form className={style.form}>
                 {Elements}
             </form>
         )
