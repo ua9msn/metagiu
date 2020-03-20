@@ -11,13 +11,7 @@ class MetaGui extends Component<{}, ConfigState> {
     static propTypes = {};
 
     state = {
-        rawText: `
-label: name
-text: NAME 
-label: fullname
-text: = NAME + " qweqwe"
-submit: SUBMIT  
-`
+        rawText: ''
     };
 
     onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
