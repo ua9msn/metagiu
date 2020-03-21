@@ -1,7 +1,9 @@
 # MetaGUI
 
 The task - make configurable form.
-First section - textarea, where the user inputs the declarative description if from.
+
+First section - textarea, where the user inputs the declarative description of the from.
+
 Second section - the form, built by the descritpion. 
 
 ## Usecase
